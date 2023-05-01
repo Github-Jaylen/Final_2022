@@ -33,13 +33,18 @@ males <- filter(FinalData, sex=="M")
 females <- filter(FinalData, sex=="F")
 ```
 
+```{r}
+gay <- filter(FinalData, LGBTQ=="gay")
+```
+
+
 ## Males
 
 ```{r}
-barchartGC(~infected + treatment,data=males)
 barchartGC(~infected + treatment,data=males, type="percent")
 
 ```
+  
 From this bar chart it shows that males that got covid did so at a higher rate when taking the placebo vs those who took the actual vaccine however even those who took the vaccine got it at a rather high rate.  
 
 ```{r}
@@ -61,10 +66,10 @@ At the 95% confidence level the P value for this test is 0.000000000002364% maki
 ## Females
 
 ```{r}
-barchartGC(~infected + treatment,data=females)
 barchartGC(~infected + treatment,data=females, type="percent")
 
 ```
+  
 This chart shows of the females that got covid more that took the vaccine still ended up with covid than those who took the placebo.  While those who were ok were very close in number close to 50/50.
 
 ```{r}
@@ -83,6 +88,12 @@ fisher.test(table1)
 At 95% confidence interval the P value for these tests was 0.004887 meaning this data could be used in confidence.  With that in mind I cannot reccomend this treatment for women as the rate of infection was higher in those that took the vaccine at 57% than those who did not take the vaccine.
 
 ## LGBTQ
+
+```{r}
+barchartGC(~infected + treatment,data=gay, type="percent")
+
+```
+
 
 
 
