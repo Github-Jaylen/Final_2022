@@ -37,7 +37,9 @@ females <- filter(FinalData, sex=="F")
 gay <- filter(FinalData, LGBTQ=="gay")
 ```
 
-
+```{r}
+druggies <- filter(FinalData, DrugUser=="yes")
+```
 ## Males
 
 ```{r}
@@ -60,7 +62,7 @@ chisqtestGC(table1)
 fisher.test(table1)
 ```
 
-At the 95% confidence level the P value for this test is 0.000000000002364% making these results rather unlikey meaning for the males while the data presented shows a 50/50 rate of the vaccine being helpful it may require further testing.
+At the 95% confidence level the P value for this test is 0.000000000002364% making these results rather unlikely meaning for the males while the data presented shows a 50/50 rate of the vaccine being helpful it may require further testing.
 
 
 ## Females
@@ -93,9 +95,24 @@ At 95% confidence interval the P value for these tests was 0.004887 meaning this
 barchartGC(~infected + treatment,data=gay, type="percent")
 
 ```
+  
+The rate of infection from this graph is an astonishing 80%+ for those who took the vaccine where as those who were ok had a slightly higher turnout of those who were ok because they got the vaccine.  It should be noted however that the amount of observations for this dataset is rather small at 3060 observations.  
 
+```{r}
+table1 <- xtabs(~infected + treatment, data=gay)
+rowPerc(table1)
+colPerc(table1)
+```
+  
+The rate of infection on those who took the vaccine was a staggering 87% leaving only 13% of those infected having taken the placebo.  For those that were not infected 51% had taken the vaccine and 49% had taken the placebo.  
 
-
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
+  
+At the 95% confidence level the P value for this test is 0.00000001244% making these results rather unlikely meaning for the males while the data presented shows an an atrocious 80% infection rate for those who took the vaccine meaning without retesting with a larger focus group this vaccine cannot be recommended for LGBTQ people.
 
 ## Druggies
 
