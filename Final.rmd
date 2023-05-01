@@ -54,7 +54,7 @@ table1 <- xtabs(~infected + treatment, data=males)
 rowPerc(table1)
 colPerc(table1)
 ```
-The numerical data shows that about 68% or those who took the placebo got covid in maales, this is lower than the 50% of those who took the new treatment however 50% with treatment is still high.  
+The numerical data shows that about 68% or those who took the placebo got covid in males, this is lower than the 50% of those who took the new treatment however 50% with treatment is still high.  
 
 ```{r}
 chisq.test(table1)
@@ -87,7 +87,7 @@ chisqtestGC(table1)
 fisher.test(table1)
 ```
 
-At 95% confidence interval the P value for these tests was 0.004887 meaning this data could be used in confidence.  With that in mind I cannot reccomend this treatment for women as the rate of infection was higher in those that took the vaccine at 57% than those who did not take the vaccine.
+At 95% confidence interval the P value for these tests was 0.004887 meaning this data could be used in confidence.  With that in mind I cannot recommend this treatment for women as the rate of infection was higher in those that took the vaccine at 57% than those who did not take the vaccine.
 
 ## LGBTQ
 
@@ -115,6 +115,32 @@ fisher.test(table1)
 At the 95% confidence level the P value for this test is 0.00000001244% making these results rather unlikely meaning for the males while the data presented shows an an atrocious 80% infection rate for those who took the vaccine meaning without retesting with a larger focus group this vaccine cannot be recommended for LGBTQ people.
 
 ## Druggies
+```{r}
+barchartGC(~infected + treatment,data=druggies, type="percent")
+
+```
+  
+The rate of infection from this graph is an astonishing 80%+ for those who took the vaccine where as those who were ok had a slightly higher turnout of those who were ok because they got the vaccine.  It should be noted however that the amount of observations for this dataset is rather small at 2560 observations.  
+
+```{r}
+table1 <- xtabs(~infected + treatment, data=druggies)
+rowPerc(table1)
+colPerc(table1)
+```
+The rate of infection on those who took the vaccine was a staggering 83% leaving only 17% of those infected having taken the placebo.  For those that were not infected 51% had taken the vaccine and 49% had taken the placebo.
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
+
+At 95% confidence interval the P value for these tests was 0.003119 meaning this data could be used in confidence.  With that in mind I cannot recommend this treatment for druggies as the rate of infection was higher in those that took the vaccine at 83% than those who did not take the vaccine.
 
 
 # Overall Results and Conclusions
+From all 4 of these subcategories the only one with an acceptable rate of prevention from the vaccine were the males at 32% infection rate for those who took the vaccine.  All the other categories had over 50% infection rate with the LGBTQ subcategory having a staggering 87% infection rate of those who took the vaccine.  Retests may need to occur for both the LGBTQ and the Female categories as their P values were quite low meaning the data could change with retesting.  This data shows that this treatment is rather unsuccessful for all but non drug using LGBTQ men which means it cannot be recommended for anyone else making the vaccine itself rather bad as that while a large portion of people is not enough for an effective vaccine.  
+
+
+
+
