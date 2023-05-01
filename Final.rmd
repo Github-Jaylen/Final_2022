@@ -24,9 +24,6 @@ mutate(across(where(is.character), as.factor))
 
 A new  preventative vaccine (covid921) is under test in clinical trials. Given the nature of this vaccine it is suspected that the drug may exhibit different effectiveness across the variety of subpopulations tracked. Consider population subgroups by gender( guys and gals), drug use, and sexual orientation. Write a complete report that separately considers this drug for each subgroup and your recommendations as to whether people in the subgroup should take the vaccine. Structure your report in four sections each devoted to one of the four subgroups, use null and alternative hypothesis statements and correct statistical verbage when referencing p-values in conclusions.
 
-```{r}
-FinalData[FinalData$sex == "M", ]
-```
 
 ```{r}
 males <- filter(FinalData, sex=="M")
@@ -40,6 +37,22 @@ barchartGC(~infected + treatment,data=FinalData)
 barchartGC(~infected + treatment,data=FinalData, type="percent")
 
 ```
+From this bar chart it shows that males that got covid did so at a higher rate when taking the placebo vs those who took the actual vaccine however even those who took the vaccine got it at a rather high rate.  
+
+```{r}
+table1 <- xtabs(~infected + treatment, data=males)
+rowPerc(table1)
+colPerc(table1)
+```
+The numerical data shows that about 68% or those who took the placebo got covid in maales, this is lower than the 50% of those who took the new treatment however 50% with treatment is still high.  
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
+
+At the 95% confidence level the P value for this test is 0.000000000002364% making these results rather unlikey meaning for the males while the data presented shows a 50/50 rate of the vaccine being helpful it may require further testing.
 
 
 ## Females
